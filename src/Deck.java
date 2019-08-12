@@ -5,18 +5,17 @@ public class Deck {
 
     public Deck()
     {
-        for(Suit s: Suit.values())
+        for(Suit suitsInDeck : Suit.values())
         {
-            for ( int i = 2; i <11; i++)
-                myDeck.add(new Card(s, i));
+            for ( int numericalInDeck = 2; numericalInDeck <11; numericalInDeck++)
+                myDeck.add(new Card( suitsInDeck, numericalInDeck) );
         }
 
         for(Picture p: Picture.values())
         {
             for(Suit s: Suit.values())
-                myDeck.add(new Card(s, p.getValue()));
+                myDeck.add(new Card(s, p.getValue(), p.name()));
         }
-
     }
 
     public Card dealCard()
@@ -30,8 +29,8 @@ public class Deck {
     {
         for (int i = 0; i < myDeck.size(); i++)
         {
-            Card current = myDeck.get(i);
-            myDeck.set((int)Math.random(), current);
+            Card selectedCard = myDeck.remove(i);
+            myDeck.add((int) (Math.random() * myDeck.size()), selectedCard);
         }
     }
 
