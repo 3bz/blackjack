@@ -13,6 +13,7 @@ public class Player {
         isAlive = true;
         hasSat = false;
     }
+
     public void hit(Card aCard)
     {
         myHand.add(aCard);
@@ -23,24 +24,29 @@ public class Player {
         hasSat = true;
     }
 
-    public boolean checkBlackjack()
+    public boolean checkHasBlackjack()
     {
-        if (myHand.size() == 2 && Integer.parseInt(readHandTotal()) == 21)
+        int smallestPossibleHandSize = 2;
+        int highestPossibleScore = 21;
+        if (myHand.size() == smallestPossibleHandSize && Integer.parseInt(calculateHandTotal()) == highestPossibleScore)
             return true;
         return false;
     }
 
-    public String readHandTotal()
+    public String calculateHandTotal()
     {
         int acesInHand = 0;
         int handTotal = 0;
+        int highestPossibleScore = 21;
 
         for (Card c : myHand) {
+            handTotal += c.getValue();
             if (c.getName() == "Ace")
-                    acesInHand++;
-                handTotal += c.getValue();
+            {
+                acesInHand++;
+            }
         }
-        if (handTotal > 21) {
+        if (handTotal > highestPossibleScore) {
             if (acesInHand == 0)
                 return "Bust!";
             else if (acesInHand > 0 && (handTotal - (10 * acesInHand)) > 21 )

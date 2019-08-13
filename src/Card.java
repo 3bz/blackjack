@@ -7,7 +7,7 @@ public class Card {
     {
         suit = aSuit;
         value = aValue;
-        this.name = String.valueOf(value);
+        name = String.valueOf(value);
     }
 
     //overloaded constructor for Picture cards
@@ -15,7 +15,7 @@ public class Card {
     {
         suit = aSuit;
         value = aValue;
-        this.name = aName;
+        name = aName;
     }
 
 

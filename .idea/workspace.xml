@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/blackjack/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/blackjack/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
@@ -80,7 +81,7 @@
       <workItem from="1565134485081" duration="299000" />
       <workItem from="1565229393856" duration="10000" />
       <workItem from="1565574748381" duration="6046000" />
-      <workItem from="1565647511098" duration="16793000" />
+      <workItem from="1565647511098" duration="21211000" />
     </task>
     <servers />
   </component>
@@ -101,6 +102,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/blackjack$Game.ic" NAME="Game Coverage Results" MODIFIED="1565668612303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/blackjack$Game.ic" NAME="Game Coverage Results" MODIFIED="1565672940369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
