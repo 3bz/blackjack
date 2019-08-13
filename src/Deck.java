@@ -34,7 +34,4 @@ public class Deck {
         }
     }
 
-    public ArrayList<Card> getMyDeck() {
-        return myDeck;
-    }
 }

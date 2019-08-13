@@ -18,11 +18,6 @@ public class Card {
         this.name = aName;
     }
 
-    public String readCard(Card aCard)
-    {
-        return (aCard.getValue() + " of " + aCard.getSuit());
-    }
-
 
     public int getValue() {
         return value;
@@ -30,17 +25,5 @@ public class Card {
 
     public Suit getSuit() { return suit; }
 
-    public void setValue(int value) { this.value = value; }
-
-    public void setSuit(Suit suit) {
-        this.suit = suit;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getName() { return name; }
 }
