@@ -2,12 +2,14 @@ import java.util.ArrayList;
 
 public class Player {
     private ArrayList<Card> myHand;
+    private String playerName;
     private boolean isAlive;
     private boolean hasSat;
 
-    public Player()
+    public Player(String aName)
     {
         myHand = new ArrayList<>();
+        playerName = aName;
         isAlive = true;
         hasSat = false;
     }
@@ -74,5 +76,9 @@ public class Player {
 
     public void setIsAlive(boolean alive) {
         isAlive = alive;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 }
