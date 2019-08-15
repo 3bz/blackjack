@@ -1,25 +1,20 @@
-import java.util.Scanner;
-
 public class Game {
-    static Deck myDeck = new Deck();
-    static Player myPlayer = new Player("Player 1");
-    static Player myDealer = new Player("Dealer");
-    static Scanner scn = new Scanner(System.in);
+    private Player myPlayer;
+    private Player myDealer;
+    private Deck myDeck;
+    private Output myOut;
+    private Input myIn;
 
-    public static void main(String[] args) {
-        init();
-        runGame();
+    public Game(Player aPlayer, Player aDealer, Deck aDeck)
+    {
+        myPlayer = aPlayer;
+        myDealer = aDealer;
+        myDeck = aDeck;
+        myOut = new Output();
+        myIn = new Input();
     }
-    public static void init() {
-        myDeck.shuffle();
 
-        int startingHandSize = 2;
-        for (int i = 0; i < startingHandSize; i++)
-            myPlayer.hit(myDeck.dealCard());
-        for (int i = 0; i < startingHandSize; i++)
-            myDealer.hit(myDeck.dealCard());
-    }
-    public static void runGame()
+    public void runGame()
     {
         if (myPlayer.checkHasBlackjack())
             playerVersusDealerBlackjack();
@@ -40,7 +35,7 @@ public class Game {
         playerWins();
     }
 
-    public static void playerTurn()
+    public void playerTurn()
     {
         while (! (myPlayer.hasSat()) )
         {
@@ -53,7 +48,7 @@ public class Game {
         }
     }
 
-    public static void dealerTurn() {
+    public void dealerTurn() {
         int dealerWontSitBelowThreshold = 17;
         while (! (myDealer.hasSat()) )
         {
@@ -61,7 +56,7 @@ public class Game {
 
             try { Thread.sleep(1800); } catch (InterruptedException e) { Thread.currentThread().interrupt();}
 
-            if (Integer.parseInt(myDealer.calculateHandTotal()) > dealerWontSitBelowThreshold)
+            if (Integer.parseInt(myDealer.calculateHandTotal()) >= dealerWontSitBelowThreshold)
                 myDealer.stay();
             else {
                 playerHits(myDealer);
@@ -73,13 +68,13 @@ public class Game {
         }
     }
 
-    public static void playerVersusDealerBlackjack()
+    public void playerVersusDealerBlackjack()
     {
-        System.out.println("Player has Blackjack, with hand [" + myPlayer.readCardsInHand() + "]\n");
+        myOut.outMessage("Player has Blackjack, with hand [" + myPlayer.readCardsInHand() + "]\n");
         try { Thread.sleep(1800); } catch (InterruptedException e) { Thread.currentThread().interrupt();}
 
         boolean isADraw = myDealer.checkHasBlackjack();
-        System.out.println("Dealer has the hand [" + myDealer.readCardsInHand() + "]\n");
+        myOut.outMessage("Dealer has the hand [" + myDealer.readCardsInHand() + "]\n");
 
         if (isADraw) {
             tieGame();
@@ -87,13 +82,13 @@ public class Game {
         playerWins();
     }
 
-    public static void readOutPlayerHand(Player aPlayer)
+    public void readOutPlayerHand(Player aPlayer)
     {
-        System.out.println( aPlayer.getPlayerName() + " is currently at " + aPlayer.calculateHandTotal());
-        System.out.println("with the hand [" + aPlayer.readCardsInHand() + "]\n");
+        myOut.outMessage(aPlayer.getPlayerName() + " is currently at " + aPlayer.calculateHandTotal());
+        myOut.outMessage("with the hand [" + aPlayer.readCardsInHand() + "]\n");
     }
-    
-    public static boolean checkPlayerIsAlive(Player aPlayer)
+
+    public boolean checkPlayerIsAlive(Player aPlayer)
     {
         if (aPlayer.calculateHandTotal().equals("Bust!")) {
             aPlayer.setIsAlive(false);
@@ -102,49 +97,45 @@ public class Game {
         return true;
     }
 
-    public static void playerHitOrStay(Player aPlayer)
+    public void playerHitOrStay(Player aPlayer)
     {
-        int playerInput;
-        System.out.print("Hit or Stay? (Hit = 1, Stay = 0): ");
-        playerInput = scn.nextInt();
+        myOut.outMessage("Hit or Stay? (Hit = 1, Stay = 0): ");
+        int playerInput = myIn.userInput();
 
         switch (playerInput) {
             case (1):
                 playerHits(aPlayer);
                 break;
-            case (0): //stay
+            case (0):
                 aPlayer.stay();
-                System.out.println("\n");
+                myOut.newLine();
                 break;
         }
     }
 
-    public static void playerHits(Player aPlayer)
+    public void playerHits(Player aPlayer)
     {
         aPlayer.hit(myDeck.dealCard());
-        System.out.println(aPlayer.getPlayerName() + " draws " + aPlayer.readLastCard() + "\n");
+        myOut.outMessage(aPlayer.getPlayerName() + " draws " + aPlayer.readLastCard() + "\n");
     }
 
-    public static boolean checkDealerScoreIsHigher()
+    public boolean checkDealerScoreIsHigher()
     {
         return ( Integer.parseInt(myDealer.calculateHandTotal()) >= Integer.parseInt(myPlayer.calculateHandTotal()) );
     }
 
-    public static void playerWins()
+    public void playerWins()
     {
-        System.out.println("You beat the dealer!");
-        System.exit(0);
+        myOut.playerWins();
     }
 
-    public static void dealerWins()
+    public void dealerWins()
     {
-        System.out.println("Dealer wins!");
-        System.exit(0);
+        myOut.dealerWins();
     }
 
-    public static void tieGame()
+    public void tieGame()
     {
-        System.out.println("We have a tie game!");
-        System.exit(0);
+        myOut.tieGame();
     }
 }

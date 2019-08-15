@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45491577-5978-4e17-b139-bbdef82ae714" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Blackjack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Input.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/blackjack/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +51,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Game" />
+    <configuration name="Blackjack" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Blackjack" />
       <module name="blackjack" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -61,7 +60,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Game" />
+        <item itemvalue="Application.Blackjack" />
       </list>
     </recent_temporary>
   </component>
@@ -81,7 +80,8 @@
       <workItem from="1565134485081" duration="299000" />
       <workItem from="1565229393856" duration="10000" />
       <workItem from="1565574748381" duration="6046000" />
-      <workItem from="1565647511098" duration="21211000" />
+      <workItem from="1565647511098" duration="21261000" />
+      <workItem from="1565820454891" duration="5733000" />
     </task>
     <servers />
   </component>
@@ -103,5 +103,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/blackjack$Game.ic" NAME="Game Coverage Results" MODIFIED="1565672940369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/blackjack$Blackjack.ic" NAME="Blackjack Coverage Results" MODIFIED="1565831430614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
