@@ -51,8 +51,12 @@ public class Player {
                 return "Bust!";
             else if (acesInHand > 0 && (handTotal - (10 * acesInHand)) > 21 )
                 return "Bust!";
-            else
-                return String.valueOf(handTotal - (10 * acesInHand));
+            else    //situations where player draws multiple aces, WAS always deducting both, instead of one when required.
+                while (handTotal > highestPossibleScore && acesInHand > 0) {
+                    handTotal -= 10;
+                    acesInHand--;
+                }
+                return String.valueOf(handTotal);
         }
         return (String.valueOf(handTotal));
     }
