@@ -5,16 +5,29 @@ public class Game {
     private Output myOut;
     private Input myIn;
 
-    public Game(Player aPlayer, Player aDealer, Deck aDeck)
+    public Game(Player aPlayer, Player aDealer, Deck aDeck, Input aInput)
     {
         myPlayer = aPlayer;
         myDealer = aDealer;
         myDeck = aDeck;
         myOut = new Output();
-        myIn = new Input();
+        myIn = aInput;
     }
 
-    public void runGame()
+    public void start()
+    {
+        myDeck.shuffle();
+
+        int startingHandSize = 2;
+        for (int i = 0; i < startingHandSize; i++)
+            myPlayer.hit(myDeck.dealCard());
+        for (int i = 0; i < startingHandSize; i++)
+            myDealer.hit(myDeck.dealCard());
+
+        runGame();
+    }
+
+    private void runGame()
     {
         if (myPlayer.checkHasBlackjack())
             playerVersusDealerBlackjack();
@@ -35,7 +48,7 @@ public class Game {
         playerWins();
     }
 
-    public void playerTurn()
+    private void playerTurn()
     {
         while (! (myPlayer.hasSat()) )
         {
@@ -48,7 +61,7 @@ public class Game {
         }
     }
 
-    public void dealerTurn() {
+    private void dealerTurn() {
         int dealerWontSitBelowThreshold = 17;
         while (! (myDealer.hasSat()) )
         {
@@ -68,7 +81,7 @@ public class Game {
         }
     }
 
-    public void playerVersusDealerBlackjack()
+    private void playerVersusDealerBlackjack()
     {
         myOut.outMessage("Player has Blackjack, with hand [" + myPlayer.readCardsInHand() + "]\n");
         try { Thread.sleep(1800); } catch (InterruptedException e) { Thread.currentThread().interrupt();}
@@ -82,13 +95,13 @@ public class Game {
         playerWins();
     }
 
-    public void readOutPlayerHand(Player aPlayer)
+    private void readOutPlayerHand(Player aPlayer)
     {
         myOut.outMessage(aPlayer.getPlayerName() + " is currently at " + aPlayer.calculateHandTotal());
         myOut.outMessage("with the hand [" + aPlayer.readCardsInHand() + "]\n");
     }
 
-    public boolean checkPlayerIsAlive(Player aPlayer)
+    private boolean checkPlayerIsAlive(Player aPlayer)
     {
         if (aPlayer.calculateHandTotal().equals("Bust!")) {
             aPlayer.setIsAlive(false);
@@ -97,7 +110,7 @@ public class Game {
         return true;
     }
 
-    public void playerHitOrStay(Player aPlayer)
+    private void playerHitOrStay(Player aPlayer)
     {
         myOut.outMessage("Hit or Stay? (Hit = 1, Stay = 0): ");
         int playerInput = myIn.userInput();
@@ -113,29 +126,32 @@ public class Game {
         }
     }
 
-    public void playerHits(Player aPlayer)
+    private void playerHits(Player aPlayer)
     {
         aPlayer.hit(myDeck.dealCard());
         myOut.outMessage(aPlayer.getPlayerName() + " draws " + aPlayer.readLastCard() + "\n");
     }
 
-    public boolean checkDealerScoreIsHigher()
+    private boolean checkDealerScoreIsHigher()
     {
         return ( Integer.parseInt(myDealer.calculateHandTotal()) >= Integer.parseInt(myPlayer.calculateHandTotal()) );
     }
 
-    public void playerWins()
+    private void playerWins()
     {
-        myOut.playerWins();
+        myOut.outMessage("You beat the dealer!");
+        System.exit(0);
     }
 
-    public void dealerWins()
+    private void dealerWins()
     {
-        myOut.dealerWins();
+        myOut.outMessage("Dealer wins!");
+        System.exit(0);
     }
 
-    public void tieGame()
+    private void tieGame()
     {
-        myOut.tieGame();
+        myOut.outMessage("We have a tie game!");
+        System.exit(0);
     }
 }

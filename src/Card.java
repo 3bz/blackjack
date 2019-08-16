@@ -10,14 +10,12 @@ public class Card {
         name = String.valueOf(value);
     }
 
-    //overloaded constructor for Picture cards
-    public Card(Suit aSuit, int aValue, String aName)
+    public static Card WithNameValue(Suit aSuit, int aValue, String aName)
     {
-        suit = aSuit;
-        value = aValue;
-        name = aName;
+        Card result = new Card(aSuit, aValue);
+        result.setName(aName);
+        return result;
     }
-
 
     public int getValue() {
         return value;
@@ -26,4 +24,8 @@ public class Card {
     public Suit getSuit() { return suit; }
 
     public String getName() { return name; }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

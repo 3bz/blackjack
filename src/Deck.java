@@ -14,7 +14,7 @@ public class Deck {
         for(Picture p: Picture.values())
         {
             for(Suit s: Suit.values())
-                myDeck.add(new Card(s, p.getValue(), p.name()));
+                myDeck.add(Card.WithNameValue(s, p.getValue(), p.name()));
         }
     }
 

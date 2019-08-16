@@ -1,3 +1,16 @@
+/**
+ * Blackjack program simulates a one-round game
+ * of the Casino game 'Blackjack', where it is
+ * simply the player versus the dealer, with one
+ * deck of cards.
+ *
+ * This class acts as the program initialiser and
+ * main method.
+ *
+ * @author ryan.ebsworth
+ *
+*/
+
 public class Blackjack {
 
     public static void main(String[] args) {
@@ -9,15 +22,9 @@ public class Blackjack {
         Deck myDeck = new Deck();
         Player myPlayer = new Player("Player 1");
         Player myDealer = new Player("Dealer");
-        myDeck.shuffle();
+        Input myInput = new TerminalInput();
 
-        int startingHandSize = 2;
-        for (int i = 0; i < startingHandSize; i++)
-            myPlayer.hit(myDeck.dealCard());
-        for (int i = 0; i < startingHandSize; i++)
-            myDealer.hit(myDeck.dealCard());
-
-        Game myGame = new Game(myPlayer, myDealer, myDeck);
-        myGame.runGame();
+        Game myGame = new Game(myPlayer, myDealer, myDeck, myInput);
+        myGame.start();
     }
 }

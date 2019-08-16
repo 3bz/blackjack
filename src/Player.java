@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 public class Player {
+    final static int highestPossibleScore = 21;
+    final static int smallestPossibleHandSize = 2;
+
     private ArrayList<Card> myHand;
     private String playerName;
     private boolean isAlive;
@@ -26,8 +29,6 @@ public class Player {
 
     public boolean checkHasBlackjack()
     {
-        int smallestPossibleHandSize = 2;
-        int highestPossibleScore = 21;
         if (myHand.size() == smallestPossibleHandSize && Integer.parseInt(calculateHandTotal()) == highestPossibleScore)
             return true;
         return false;
@@ -37,7 +38,6 @@ public class Player {
     {
         int acesInHand = 0;
         int handTotal = 0;
-        int highestPossibleScore = 21;
 
         for (Card c : myHand) {
             handTotal += c.getValue();
@@ -49,7 +49,7 @@ public class Player {
         if (handTotal > highestPossibleScore) {
             if (acesInHand == 0)
                 return "Bust!";
-            else if (acesInHand > 0 && (handTotal - (10 * acesInHand)) > 21 )
+            else if (acesInHand > 0 && (handTotal - (10 * acesInHand)) > highestPossibleScore )
                 return "Bust!";
             else    //situations where player draws multiple aces, WAS always deducting both, instead of one when required.
                 while (handTotal > highestPossibleScore && acesInHand > 0) {
